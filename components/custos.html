@@ -1,0 +1,113 @@
+<section id="custos-cloud" class="container">
+  <header class="page-header">
+    <h1 class="title">Como Funcionam os Custos na Computação em Nuvem</h1>
+    <p class="lead">Entenda como os provedores calculam preços e como otimizar seus gastos desde o início.</p>
+  </header>
+
+  <article class="content-card">
+    <section>
+      <h2 class="accent">A lógica fundamental dos custos na nuvem</h2>
+      <p>
+        Diferente de servidores físicos, onde você compra hardware e paga tudo antecipadamente,
+        na nuvem o modelo é baseado em <strong>consumo real</strong>. Isso significa que você paga
+        apenas pelos recursos que utilizar: processamento, memória, armazenamento, tráfego,
+        banco de dados, chamadas de API e assim por diante.
+      </p>
+      <p>
+        Cada serviço possui uma forma específica de cobrança, mas todos seguem um princípio:
+        <strong>quanto mais você utiliza, mais paga; quanto menos usa, menos paga.</strong>
+      </p>
+    </section>
+
+    <!-- Imagem ilustrativa 1 -->
+    <div class="image-center">
+      <img src="https://img.icons8.com/?size=512&id=pCOk5CkOUNZs&format=png" alt="Custo baseado em uso" />
+      <p class="img-desc">A nuvem funciona como energia elétrica: consome → paga.</p>
+    </div>
+
+    <section>
+      <h2 class="accent">Principais categorias de custos</h2>
+      <ul>
+        <li><strong>Computação:</strong> máquinas virtuais, containers, funções serverless.</li>
+        <li><strong>Armazenamento:</strong> discos, buckets, snapshots, backups.</li>
+        <li><strong>Rede:</strong> tráfego de saída (egress), balanceadores, VPN.</li>
+        <li><strong>Bancos de dados:</strong> instâncias gerenciadas, queries e I/O.</li>
+        <li><strong>Serviços gerenciados:</strong> filas, mensageria, monitoramento, autenticação.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="accent">Como os provedores calculam os custos</h2>
+      <p>Embora cada nuvem tenha seu próprio catálogo, os modelos de cobrança geralmente são parecidos:</p>
+      <ul>
+        <li><strong>Por hora ou segundo:</strong> VMs, containers, pipelines.</li>
+        <li><strong>Por GB armazenado:</strong> S3, Blob Storage, Cloud Storage.</li>
+        <li><strong>Por GB transferido:</strong> tráfego de saída (sempre o mais caro!).</li>
+        <li><strong>Por execução:</strong> funções serverless (ex.: Lambda).</li>
+        <li><strong>Por leitura/escrita:</strong> bancos NoSQL como DynamoDB ou Firestore.</li>
+      </ul>
+      <p>
+        Essa granularidade permite pagar apenas pelo que realmente usa, mas também abre espaço
+        para desperdícios se não houver controle.
+      </p>
+    </section>
+
+    <!-- gráfico pizza simples -->
+    <section>
+      <h2 class="accent">Distribuição típica de custos em um projeto</h2>
+      <div class="chart-container">
+        <svg class="chart" width="100%" height="180" viewBox="0 0 300 180">
+  <rect x="10" y="20" width="80" height="120" fill="#4a90e2"></rect>
+  <rect x="110" y="40" width="80" height="100" fill="#50e3c2"></rect>
+  <rect x="210" y="60" width="80" height="80" fill="#f5a623"></rect>
+</svg>
+      </div>
+      <ul>
+        <li><strong>Computação:</strong> ~42%</li>
+        <li><strong>Armazenamento:</strong> ~30%</li>
+        <li><strong>Rede:</strong> ~18%</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="accent">Fatores que mais encarecem a nuvem</h2>
+      <ul>
+        <li><strong>Máquinas virtuais superdimensionadas</strong> — CPU e RAM além do necessário.</li>
+        <li><strong>Tráfego de saída (egress)</strong> — quase sempre o maior vilão de custos.</li>
+        <li><strong>Armazenamento sem limpeza</strong> — buckets, snapshots e logs esquecidos.</li>
+        <li><strong>Serviços sempre ligados</strong> sem necessidade (DBs ou VMs 24/7).</li>
+        <li><strong>Ambientes duplicados</strong> sem automação para desligamento.</li>
+      </ul>
+    </section>
+
+    <!-- imagem ilustrando desperdício -->
+    <div class="image-center">
+      <img src="https://img.icons8.com/?size=512&id=98976&format=png" alt="Custo excessivo" />
+      <p class="img-desc">Máquinas ligadas sem uso = dinheiro queimado.</p>
+    </div>
+
+    <section>
+      <h2 class="accent">Como reduzir custos de forma inteligente</h2>
+      <ul>
+        <li>Use <strong>instâncias menores</strong> e aumente apenas quando necessário.</li>
+        <li>Implemente <strong>auto scaling</strong> para lidar com picos.</li>
+        <li>Ative <strong>Lifecycle Policies</strong> para limpar arquivos antigos.</li>
+        <li>Utilize bancos serverless (ex.: Aurora Serverless, Firestore).</li>
+        <li>Monitore com ferramentas como <strong>CloudWatch, Azure Monitor, Stackdriver</strong>.</li>
+      </ul>
+    </section>
+
+    <!-- gráfico comparativo -->
+    <section>
+      <h2 class="accent">Comparação rápida de custo médio entre clouds</h2>
+      <div class="chart-bars">
+        <svg class="chart" width="100%" height="180" viewBox="0 0 300 180">
+  <rect x="10" y="20" width="80" height="120" fill="#4a90e2"></rect>
+  <rect x="110" y="40" width="80" height="100" fill="#50e3c2"></rect>
+  <rect x="210" y="60" width="80" height="80" fill="#f5a623"></rect>
+</svg>
+      </div>
+    </section>
+
+  </article>
+</section>

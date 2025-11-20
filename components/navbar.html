@@ -1,0 +1,45 @@
+<link rel="icon" href="favicon.ico" type="../img/nuvem.png">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="../style/style-navBar.css">
+<link rel="stylesheet" href="../style/style-logo.css">
+
+<!-- <link rel="stylesheet" href="../style/style-search.css"> -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <i class="fas fa-cloud"></i>
+        <p>CloudIsFuture</p>
+    </div>
+
+    <!-- <div class="search-container"> 
+        <input type="text" id="search-input" placeholder="Pesquisar..." onkeyup="filterSuggestions()" onclick="showAllSuggestions()">
+        
+        <ul id="suggestions-list" class="suggestions">
+            </ul>
+        
+        <button onclick="performSearch()">Pesquisar</button>
+    </div> -->
+
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Pesquisar..." onkeyup="filterSuggestions()">
+        <button >Pesquisar</button>
+    
+        <ul id="suggestions-list" class="suggestions">
+            </ul>
+    </div>
+
+    <ul>
+        <li><a style="--d:100ms" href="../index.html">O que é</a></li>
+        <li><a style="--d:200ms" href="../page/index-mercado.html">Principais</a></li>
+        <li><a style="--d:200ms" href="../page/index-custos.html">custos</a></li>
+        <li><a style="--d:200ms" href="#">Lab</a></li>
+    </ul>
+</nav>
+
+<div id="progress-bar"></div>
+
+<script src="../script/progress-bar.js"> </script>

@@ -1,0 +1,11 @@
+.logo {
+    display: flex; /* Para alinhar o ícone e o texto lado a lado */
+    align-items: center;
+    font-size: 24px; /* Tamanho geral do logo */
+    font-weight: bold;
+    color: #1E90FF; /* Cor azul para o texto e o ícone */
+}
+
+.logo i {
+    margin-right: 8px; /* Espaço entre o ícone e o texto */
+}

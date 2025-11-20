@@ -1,0 +1,35 @@
+/* 1. O contêiner pai define o ponto de referência (posição relativa) */
+.search-container {
+    position: relative; /* CRUCIAL para que o 'absolute' da lista funcione corretamente */
+    display: flex; /* Para manter o input e o botão na mesma linha */
+    align-items: center;
+}
+
+/* 2. Estilização da lista de sugestões */
+#suggestions-list {
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    
+    /* Posição absoluta agora fica relativa ao .search-container */
+    position: absolute; 
+    top: 100%; /* Coloca a lista imediatamente abaixo do input */
+    left: 0;
+    
+    z-index: 1000; 
+    background-color: white;
+    width: 100%; /* Faz a lista ter a mesma largura do container/input */
+    max-height: 200px;
+    overflow-y: auto; /* Adiciona scroll se houver muitas opções */
+}
+
+#suggestions-list li {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+#suggestions-list li:hover {
+    background-color: #f1f1f1; 
+}
