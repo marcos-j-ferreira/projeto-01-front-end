@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitor de Requisições</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #1a73e8;
+            color: white;
+            padding: 15px 25px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 25px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .stat-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+
+        button {
+            background: #1a73e8;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background: #155fc4;
+        }
+    </style>
+</head>
+<body>
+
+<header>📊 Monitor de Requisições (Atualização a cada 5s)</header>
+
+<div class="container">
+
+    <!-- Botão para incrementar -->
+    <div class="card">
+        <button onclick="increment()">Fazer uma requisição (/inc)</button>
+    </div>
+
+    <!-- Gráfico -->
+    <div class="card">
+        <canvas id="chart" height="120"></canvas>
+    </div>
+
+    <!-- Estatísticas -->
+    <div class="card">
+        <h2>📌 Estatísticas</h2>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div>Total de Requisições</div>
+                <div id="stat-total" class="stat-number">0</div>
+            </div>
+
+            <div class="stat-box">
+                <div>Média por intervalo</div>
+                <div id="stat-avg" class="stat-number">0</div>
+            </div>
+
+            <div class="stat-box">
+                <div>Último intervalo</div>
+                <div id="stat-last" class="stat-number">0</div>
+            </div>
+
+            <div class="stat-box">
+                <div>Nº de intervalos</div>
+                <div id="stat-count" class="stat-number">0</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const API_URL = "http://localhost:8080";
+
+    // 🔹 Função para chamar /inc
+    async function increment() {
+        await fetch(`${API_URL}/inc`)
+            .then(() => console.log("Incrementado!"))
+            .catch(err => console.error(err));
+    }
+
+    // 🔹 Gráfico Chart.js
+    const ctx = document.getElementById("chart").getContext("2d");
+
+    const chart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Requisições por intervalo (5s)",
+                data: [],
+                borderWidth: 2,
+                borderColor: "#1a73e8",
+                backgroundColor: "rgba(26,115,232,0.2)",
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // 🔹 Atualiza os dados a cada 2 segundos
+    async function fetchValues() {
+        try {
+            const res = await fetch(`${API_URL}/values`);
+            const data = await res.json();
+
+            chart.data.labels = data.map((_, i) => `T${i + 1}`);
+            chart.data.datasets[0].data = data;
+            chart.update();
+
+            updateStats(data);
+
+        } catch (err) {
+            console.error("Erro ao buscar valores:", err);
+        }
+    }
+
+    // 🔹 Estatísticas
+    function updateStats(values) {
+        if (values.length === 0) return;
+
+        const total = values.reduce((a, b) => a + b, 0);
+        const last = values[values.length - 1];
+        const avg = (total / values.length).toFixed(2);
+
+        document.getElementById("stat-total").textContent = total;
+        document.getElementById("stat-avg").textContent = avg;
+        document.getElementById("stat-last").textContent = last;
+        document.getElementById("stat-count").textContent = values.length;
+    }
+
+    // Atualiza automaticamente
+    setInterval(fetchValues, 2000);
+    fetchValues();
+</script>
+
+</body>
+</html>

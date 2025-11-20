@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudISFuture</title>
+
+</head>
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <div id="form-placeholder"></div>
+
+    <div id="footer-placeholder"></div>
+</body>
+<script>
+    $(document).ready(function() {
+        $("#navbar-placeholder").load("../components/navbar.html");
+    });
+
+    $(document).ready(function() {
+        $("#form-placeholder").load("../components/form.html");
+    });
+
+    $(document).ready(function() {
+        $("#footer-placeholder").load("../components/footer.html")
+    });
+</script>
+</html>
