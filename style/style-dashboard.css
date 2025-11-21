@@ -45,9 +45,8 @@
             padding: 12px 20px;
             border: none;
             border-radius: 6px;
-            cursor: pointer;
+            cursor:pointer;
             font-size: 16px;
-            margin-bottom: 20px;
         }
 
         button:hover {

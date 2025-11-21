@@ -17,12 +17,12 @@
 # =====================
 # ETAPA 1: Build da API
 # =====================
-FROM golang:1.23-alpine AS builder
+#FROM golang:1.23-alpine AS builder
 
-WORKDIR /build
+#WORKDIR /build
 
-COPY back-end/ ./back-end/
-RUN cd back-end && go build -o api .
+#COPY back-end/ ./back-end/
+#RUN cd back-end && go build -o api .
 
 # =====================
 # ETAPA 2: NGINX + FRONT + API
@@ -39,15 +39,15 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY . /usr/share/nginx/html
 
 # Copia o binário da API compilado
-COPY --from=builder /build/back-end/api /usr/local/bin/api
+#COPY --from=builder /build/back-end/api /usr/local/bin/api
 
 # Copia o script de inicialização
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+#COPY entrypoint.sh /entrypoint.sh
+#RUN chmod +x /entrypoint.sh
 
 EXPOSE 80
 
 # Roda os dois serviços (Nginx + API)
-CMD ["/entrypoint.sh"]
+#CMD ["/entrypoint.sh"]
 
 

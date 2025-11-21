@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Monitor de Requisições</title>
+    <title>CLoudIsFuture</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -17,12 +17,12 @@
     <div id="navbar-placeholder"></div>
 
 
-    <header> Monitor de Requisições (Atualização a cada 5s)</header>
-
+    
     <div class="container">
-
+        
         <!-- Botão para incrementar -->
         <div class="card">
+            <h2 style="color: #1a73e8;">Monitor de Requisições (Atualização a cada 5s)</h2>
             <button onclick="increment()">Fazer uma requisição (/inc)</button>
         </div>
 
@@ -62,7 +62,9 @@
     <div id="footer-placeholder"></div>
 
 </body>
-<script src="/script/dashboard-script.js">
+<script src="/script/dashboard-script.js"></script>
+
+<script>
 
     $(document).ready(function () {
         $("#navbar-placeholder").load("/components/navbar.html");
