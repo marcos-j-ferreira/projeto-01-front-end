@@ -27,10 +27,10 @@ func main() {
 	mux.HandleFunc("/values", valuesHandler)
 
 	// aplica o middleware de CORS
-	//handlerWithCORS := enableCORS(mux)
+	handlerWithCORS := enableCORS(mux)
 
 	fmt.Println("Server on :8080")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe("0.0.0.0:8080", handlerWithCORS)
 }
 
 // Middleware para ativar CORS

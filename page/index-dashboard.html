@@ -3,30 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloudIsFuture </title>
+    <title>Document</title>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+    <link rel="stylesheet" href="/style/style-dashboard.css">
 </head>
 <body>
+    
     <div id="navbar-placeholder"></div>
 
-    <div id="about-placeholder"></div>
+    <div id="dashboard-placeholder"></div>
 
     <div id="footer-placeholder"></div>
-
 </body>
-<Script>
+
+<script>
     $(document).ready(function() {
         $("#navbar-placeholder").load("/components/navbar.html");
     });
 
     $(document).ready(function() {
-        $("#about-placeholder").load("/components/about-01.html")
-    })
+        $("#dashboard-placeholder").load("../components/dashboard.html");
+    });
 
     $(document).ready(function() {
         $("#footer-placeholder").load("/components/footer.html");
     });
-</Script>
-
+</script>
 </html>
